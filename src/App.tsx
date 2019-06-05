@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as types from './types';
 import { fetchDestinations, fetchPrices } from './modules/actions';
 
-import DestinationSelection from './DestinationSelection';
+import DestinationSelection from './DestinationSelection/DestinationSelection';
 
 interface IApp {
   destinations: types.IDestination[];
