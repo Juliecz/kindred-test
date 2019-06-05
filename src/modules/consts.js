@@ -1,0 +1,2 @@
+export const SET_DESTINATIONS = 'SET_DESTINATIONS';
+export const SET_PRICES = 'SET_PRICES';
