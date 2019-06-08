@@ -1,6 +1,11 @@
 import fetchData from '../helpers/fetchData';
 
-import { SET_DESTINATIONS, SET_PRICES } from './consts';
+import {
+  SET_DESTINATIONS,
+  SET_PRICES,
+  SELECT_DESTINATION_FROM,
+  SELECT_DESTINATION_TO,
+} from './consts';
 
 export const setDestinations = destinations => ({
   type: SET_DESTINATIONS,
@@ -28,3 +33,13 @@ export const fetchPrices = (dep = 'PRG', arr = 'AMS', monthSel = '05/2019') => d
     .then(data => dispatch(setPrices(data)))
     .catch(err => err);
 };
+
+export const selectDestinationFrom = (value) => ({
+  type: SELECT_DESTINATION_FROM,
+  value,
+});
+
+export const selectDestinationTo = (value) => ({
+  type: SELECT_DESTINATION_TO,
+  value,
+});

@@ -1,26 +1,74 @@
 import * as React from 'react';
-import * as types from '../types';
+import { connect } from 'react-redux';
 
-import Dropdown from '../Dropdown';
+import * as types from '../types';
+import {
+  fetchDestinations,
+  selectDestinationFrom,
+  selectDestinationTo
+} from '../modules/actions';
+
+import Dropdown from '../Dropdown/Dropdown';
+
 import './style.less';
+
 
 interface IDestinationSelection {
   destinations: types.IDestination[];
+  selected: types.ISelectedDestination;
+  selectDestinationFrom: (value: types.IDestination) => void;
+  selectDestinationTo: (value: types.IDestination) => void;
 }
 
-const DestinationSelection: React.FunctionComponent<IDestinationSelection> = (
-  props: IDestinationSelection,
-) => {
-  const { destinations } = props;
-  return (
-    <div className="destination-wrapper">
-      <Dropdown name="departures" destinations={destinations} defaultValue="PRG" />
+class DestinationSelection extends React.Component<IDestinationSelection, {}> {
+  selectDestinationFrom = value => {
+    this.props.selectDestinationFrom(value);
+  };
 
-      {/* TODO Add swapping */}
+  selectDestinationTo = value => {
+    this.props.selectDestinationTo(value);
+  };
 
-      <Dropdown name="arrivals" destinations={destinations} />
-    </div>
-  );
-};
+  render() {
+    const { destinations, selected } = this.props;
 
-export default DestinationSelection;
+    return (
+      <div className="destination">
+        <div className="destination-wrapper">
+          <Dropdown
+            name="departures"
+            destinations={destinations}
+            selected={selected.from}
+            selectDestination={this.selectDestinationFrom}
+          />
+
+          <div className="destination-swapping">Swap</div>
+          {/* TODO Add swapping */}
+
+          <Dropdown
+            name="arrivals"
+            destinations={destinations}
+            selected={selected.to}
+            selectDestination={this.selectDestinationTo}
+          />
+        </div>
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  destinations: state.destinations,
+  selected: state.selected,
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchDestinations: () => dispatch(fetchDestinations()),
+  selectDestinationFrom: value => dispatch(selectDestinationFrom(value)),
+  selectDestinationTo: value => dispatch(selectDestinationTo(value)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(DestinationSelection);

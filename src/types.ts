@@ -27,3 +27,13 @@ export interface IPrices {
   currency: string;
   dayList: IDay[];
 }
+
+export interface ISelectedDestinationData {
+  data: IDestination;
+  text: string;
+}
+
+export interface ISelectedDestination {
+  from: ISelectedDestinationData;
+  to: ISelectedDestinationData;
+}

@@ -7,18 +7,14 @@ import { fetchDestinations, fetchPrices } from './modules/actions';
 import DestinationSelection from './DestinationSelection/DestinationSelection';
 
 interface IApp {
-  destinations: types.IDestination[];
-  prises: types.IPrices;
-  fetchDestinations: () => any;
-  fetchPrices: () => any;
+  destinations: types.IDestination[],
+  prises: types.IPrices,
+  selected: types.ISelectedDestination,
+  fetchDestinations: () => () => void,
+  fetchPrices: () => () => void,
 }
 
 class App extends React.Component<IApp, {}> {
-  // constructor(props: AppProps) {
-  //   super(props);
-  //
-  // }
-
   componentDidMount(): void {
     this.props.fetchDestinations();
     this.props.fetchPrices();
@@ -28,10 +24,9 @@ class App extends React.Component<IApp, {}> {
     const { destinations } = this.props;
     return (
       <>
-        <h1>Welcome to React with Typescript</h1>
-        <p>The color of this page is:</p>
-
-        {!!destinations.length && <DestinationSelection destinations={destinations} />}
+        {!!destinations.length && (
+          <DestinationSelection />
+        )}
       </>
     );
   }
