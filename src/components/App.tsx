@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import * as types from './types';
-import { fetchDestinations, fetchPrices } from './modules/actions';
+import * as types from '../helpers/types';
+import { fetchDestinations, fetchPrices } from '../modules/actions';
 
 import DestinationSelection from './DestinationSelection/DestinationSelection';
+import DateSelection from './DateSelection/DateSelection';
 
 interface IApp {
   destinations: types.IDestination[],
@@ -27,6 +28,7 @@ class App extends React.Component<IApp, {}> {
         {!!destinations.length && (
           <DestinationSelection />
         )}
+        <DateSelection />
       </>
     );
   }

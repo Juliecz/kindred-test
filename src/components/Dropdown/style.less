@@ -4,27 +4,7 @@
   -moz-border-radius: 10px;
   border-radius: 10px;
   background-color: white;
-
-
-  &__label {
-    width: 100%;
-    position: relative;
-
-    input {
-      width: 99%; //TODO ?
-      height: 66px;
-      -webkit-border-radius: 10px;
-      -moz-border-radius: 10px;
-      border-radius: 10px;
-      border: 1px solid #eceff5;
-      color: #1f2128;
-      cursor: pointer;
-
-      &:focus {
-        outline: none;
-      }
-    }
-  }
+  z-index: 10;
 
   &__list {
     max-height: 250px;
@@ -33,6 +13,7 @@
     padding: 0;
     position: absolute;
     background-color: white;
+    z-index: 10;
 
     li {
       list-style: none;

@@ -1,28 +1,34 @@
 import * as React from 'react';
-import * as types from '../types';
+import * as types from '../../helpers/types';
+
+import useOutsideClick from '../../hooks/clickOutside';
+import TextInput from '../TextInput/TextInput';
 
 import './style.less';
 
-interface DropdownProps {
+interface IDropdown {
   name: string,
   destinations: types.IDestination[],
   selected: types.ISelectedDestinationData,
   selectDestination: (value: types.IDestination) => void;
 }
 
-const Dropdown: React.FunctionComponent<DropdownProps> = (props: DropdownProps) => {
+const Dropdown: React.FunctionComponent<IDropdown> = (props: IDropdown) => {
   const { destinations, selected, selectDestination } = props;
   const [focus, setFocus] = React.useState(false);
 
-  const onClick = (): any => {
+
+
+  const ref = React.useRef();
+
+  useOutsideClick(ref, () => {
     if (focus) {
       setFocus(false);
     }
-    setFocus(true);
-  };
+  });
 
-  const onBlur = (): any => {
-    // setFocus(false);
+  const onClick = (): any => {
+    setFocus(true);
   };
 
   const onSelect = (destination: types.IDestination): any => {
@@ -33,23 +39,20 @@ const Dropdown: React.FunctionComponent<DropdownProps> = (props: DropdownProps) 
   const { name } = props;
   return (
     <div id={name} className="dropdown-wrapper">
-      <label className="dropdown-wrapper__label">
-        <input
-          type="text"
-          value={
-            selected && selected.data
-              ? `${selected.data.AirportCityName}, ${selected.data.AirportName} (${
-                  selected.data.AirportCode
-                })`
-              : selected.text
-          }
-          onClick={onClick}
-          onBlur={onBlur}
-        />
-      </label>
+      <TextInput
+        value={
+          selected && selected.data
+            ? `${selected.data.AirportCityName}, ${selected.data.AirportName} (${
+              selected.data.AirportCode
+              })`
+            : selected.text
+        }
+        labelClassName="dropdown-wrapper__label"
+        onClick={onClick}
+      />
 
       {focus && (
-        <ul className="dropdown-wrapper__list">
+        <ul className="dropdown-wrapper__list" ref={ref}>
           {destinations.map(destination => {
             const { DestinationID, AirportCode, AirportCityName, AirportName } = destination;
 

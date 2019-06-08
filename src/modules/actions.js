@@ -3,8 +3,10 @@ import fetchData from '../helpers/fetchData';
 import {
   SET_DESTINATIONS,
   SET_PRICES,
-  SELECT_DESTINATION_FROM,
-  SELECT_DESTINATION_TO,
+  SELECT_DEPARTURE,
+  SELECT_ARRIVAL,
+  SWAP_DEPARTURE_ARRIVAL,
+  SET_SELECTED_DATE,
 } from './consts';
 
 export const setDestinations = destinations => ({
@@ -34,12 +36,21 @@ export const fetchPrices = (dep = 'PRG', arr = 'AMS', monthSel = '05/2019') => d
     .catch(err => err);
 };
 
-export const selectDestinationFrom = (value) => ({
-  type: SELECT_DESTINATION_FROM,
+export const selectDeparture = (value) => ({
+  type: SELECT_DEPARTURE,
   value,
 });
 
-export const selectDestinationTo = (value) => ({
-  type: SELECT_DESTINATION_TO,
+export const selectArrival = (value) => ({
+  type: SELECT_ARRIVAL,
+  value,
+});
+
+export const swapDepartureArrival = () => ({
+  type: SWAP_DEPARTURE_ARRIVAL,
+});
+
+export const setSelectedDate = (value) => ({
+  type: SET_SELECTED_DATE,
   value,
 });

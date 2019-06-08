@@ -1,0 +1,49 @@
+.calendar {
+  width: 100%;
+
+  &-months {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border: 1px solid #eceff5;
+
+    &__year {
+      text-align: center;
+      color: #00599f;
+      padding-right: 25px;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+
+      > h3 {
+        display: inline-block;
+      }
+
+      > span {
+        margin: 15%;
+        color: rgba(0, 89, 159, 0.25);
+        cursor: pointer;
+        font-weight: bold;
+      }
+    }
+
+    &__wrapper {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &__item {
+      width: 33%;
+        cursor: pointer;
+        color: #00599f;
+        text-align: center;
+        padding-top: 25px;
+
+        &:nth-child(10) {
+          padding-bottom: 25px;
+        }
+    }
+  }
+}

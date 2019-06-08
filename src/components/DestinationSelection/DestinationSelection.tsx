@@ -1,32 +1,37 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import * as types from '../types';
+import * as types from '../../helpers/types';
 import {
   fetchDestinations,
-  selectDestinationFrom,
-  selectDestinationTo
-} from '../modules/actions';
+  selectDeparture,
+  selectArrival,
+  swapDepartureArrival,
+} from '../../modules/actions';
 
 import Dropdown from '../Dropdown/Dropdown';
 
 import './style.less';
 
-
 interface IDestinationSelection {
   destinations: types.IDestination[];
   selected: types.ISelectedDestination;
-  selectDestinationFrom: (value: types.IDestination) => void;
-  selectDestinationTo: (value: types.IDestination) => void;
+  selectDeparture: (value: types.IDestination) => void;
+  selectArrival: (value: types.IDestination) => void;
+  swapDepartureArrival: () => void;
 }
 
 class DestinationSelection extends React.Component<IDestinationSelection, {}> {
-  selectDestinationFrom = value => {
-    this.props.selectDestinationFrom(value);
+  selectDeparture = value => {
+    this.props.selectDeparture(value);
   };
 
-  selectDestinationTo = value => {
-    this.props.selectDestinationTo(value);
+  selectArrival = value => {
+    this.props.selectArrival(value);
+  };
+
+  swapDepartureArrival = () => {
+    this.props.swapDepartureArrival();
   };
 
   render() {
@@ -39,17 +44,22 @@ class DestinationSelection extends React.Component<IDestinationSelection, {}> {
             name="departures"
             destinations={destinations}
             selected={selected.from}
-            selectDestination={this.selectDestinationFrom}
+            selectDestination={this.selectDeparture}
           />
 
-          <div className="destination-swapping">Swap</div>
-          {/* TODO Add swapping */}
-
+          <div className="destination-swapping">
+            {selected.from.data && selected.to.data && (
+              <span onClick={this.swapDepartureArrival}>
+                Swap
+                {/* TODO Add swapping */}
+              </span>
+            )}
+          </div>
           <Dropdown
             name="arrivals"
             destinations={destinations}
             selected={selected.to}
-            selectDestination={this.selectDestinationTo}
+            selectDestination={this.selectArrival}
           />
         </div>
       </div>
@@ -64,8 +74,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchDestinations: () => dispatch(fetchDestinations()),
-  selectDestinationFrom: value => dispatch(selectDestinationFrom(value)),
-  selectDestinationTo: value => dispatch(selectDestinationTo(value)),
+  selectDeparture: value => dispatch(selectDeparture(value)),
+  selectArrival: value => dispatch(selectArrival(value)),
+  swapDepartureArrival: () => dispatch(swapDepartureArrival()),
 });
 
 export default connect(
