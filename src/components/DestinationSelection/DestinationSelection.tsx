@@ -50,8 +50,7 @@ class DestinationSelection extends React.Component<IDestinationSelection, {}> {
           <div className="destination-swapping">
             {selected.from.data && selected.to.data && (
               <span onClick={this.swapDepartureArrival}>
-                Swap
-                {/* TODO Add swapping */}
+                <img src="/src/assets/swap.png" alt="Swap" />
               </span>
             )}
           </div>

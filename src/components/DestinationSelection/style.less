@@ -1,7 +1,4 @@
 .destination {
-  //padding: 220px 0 100px;
-  //margin: -8px;
-
   &-wrapper {
     display: flex;
     justify-content: center;
@@ -12,5 +9,18 @@
   &-swapping {
     width: 30%;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > span img {
+      width: 45px;
+      height: auto;
+      transition: transform .4s;
+
+      &:hover {
+        transform: rotate(180deg);
+      }
+    }
   }
 }
