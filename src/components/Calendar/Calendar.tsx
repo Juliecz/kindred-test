@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as moment from 'moment';
 
 import useOutsideClick from '../../hooks/clickOutside';
+import TextInput from '../TextInput/TextInput';
 
 import './style.less';
 
@@ -20,7 +21,12 @@ const Calendar: React.FunctionComponent<IMonthlyCalendar> = (props: IMonthlyCale
     const onClickMonth = (value: string) => {
       setMonth(value);
       setShowCalendar(false);
-      props.setSelectedDate(moment().year(year).month(value).format('MM/YYYY'));
+      props.setSelectedDate(
+        moment()
+          .year(year)
+          .month(value)
+          .format('MM/YYYY'),
+      );
     };
 
     React.useEffect(() => {
@@ -33,8 +39,6 @@ const Calendar: React.FunctionComponent<IMonthlyCalendar> = (props: IMonthlyCale
   };
   const [month, onClickMonth] = useSetMonth();
 
-
-
   const ref = React.useRef();
 
   useOutsideClick(ref, () => {
@@ -46,13 +50,11 @@ const Calendar: React.FunctionComponent<IMonthlyCalendar> = (props: IMonthlyCale
   const { selected } = props;
   return (
     <div className="calendar">
-      <label className="dropdown-wrapper__label">
-        <input
-          type="text"
-          value={selected}
-          onClick={() => setShowCalendar(true)}
-        />
-      </label>
+      <TextInput
+        value={selected}
+        onClick={() => setShowCalendar(true)}
+        labelClassName="dropdown-wrapper__label"
+      />
 
       {showCalendar && (
         <div className="calendar-months" ref={ref}>

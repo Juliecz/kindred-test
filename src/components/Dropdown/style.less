@@ -1,10 +1,12 @@
 .dropdown-wrapper {
   width: 100%;
+  max-width: 440px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
   background-color: white;
   z-index: 10;
+
   &:hover {
     color: #00599f;
     background-color: #eff6ff;
@@ -12,18 +14,19 @@
   }
 
   &__list {
+    width: 28.4%;
+    max-width: 440px;
     max-height: 250px;
-    overflow-y: scroll;
     margin: 0;
     padding: 0;
     position: absolute;
     background-color: white;
-    z-index: 10;
-    width: 28.4%;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
     box-shadow: 0 0 54px 0 rgba(5,15,34,.45);
+    overflow-y: scroll;
+    z-index: 10;
 
     li {
       list-style: none;
