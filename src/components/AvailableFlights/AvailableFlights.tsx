@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as moment from 'moment';
+import * as numeral from 'numeral';
 import * as types from '../../helpers/types';
 
 import './style.less';
@@ -23,9 +24,11 @@ const AvailableFlights: React.FunctionComponent<IAvailableFlights> = (props: IAv
           day.flights.map(flight => (
             <li>
               <span>{moment(day.date).format('D.MM.YYYY')}</span>
-              <span>{day.price}</span>
+              <span>{`${numeral(day.price).format('0,0')} CZK`}</span>
               <span>{flight.seats}</span>
-              <span>{flight.duration}</span>
+              <span>
+                {`${flight.duration.substr(0, 2)}:${flight.duration.substr(2, 4)}`}
+              </span>
             </li>
           )),
         )}
