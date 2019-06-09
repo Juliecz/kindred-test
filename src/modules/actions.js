@@ -2,7 +2,7 @@ import fetchData from '../helpers/fetchData';
 
 import {
   SET_DESTINATIONS,
-  SET_PRICES,
+  SET_FLIGHTS,
   SELECT_DEPARTURE,
   SELECT_ARRIVAL,
   SWAP_DEPARTURE_ARRIVAL,
@@ -14,9 +14,9 @@ export const setDestinations = destinations => ({
   destinations,
 });
 
-export const setPrices = prices => ({
-  type: SET_PRICES,
-  prices,
+export const setFlights = flights => ({
+  type: SET_FLIGHTS,
+  flights,
 });
 
 export const fetchDestinations = () => dispatch => {
@@ -27,12 +27,12 @@ export const fetchDestinations = () => dispatch => {
     .catch(err => err);
 };
 
-export const fetchPrices = (dep = 'PRG', arr = 'AMS', monthSel = '05/2019') => dispatch => {
+export const fetchFlights = (dep, arr, monthSel) => dispatch => {
   fetchData(
     `https://www.csa.cz/Umbraco/Api/CalendarPricesCache/GetPrices/
         ?DEP=${dep}&ARR=${arr}&MONTH_SEL=${monthSel}&SECTOR_ID=0&LANG=cs&ID_LOCATION=cz`,
   )
-    .then(data => dispatch(setPrices(data)))
+    .then(data => dispatch(setFlights(data)))
     .catch(err => err);
 };
 

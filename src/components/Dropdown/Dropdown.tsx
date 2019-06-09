@@ -17,8 +17,6 @@ const Dropdown: React.FunctionComponent<IDropdown> = (props: IDropdown) => {
   const { destinations, selected, selectDestination } = props;
   const [focus, setFocus] = React.useState(false);
 
-
-
   const ref = React.useRef();
 
   useOutsideClick(ref, () => {

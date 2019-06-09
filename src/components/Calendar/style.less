@@ -1,11 +1,18 @@
 .calendar {
   width: 100%;
+  max-width: 500px;
+  min-width: 300px;
 
   &-months {
-    -webkit-border-radius: 10px;
+    width: 59%;
+    max-width: 500px;
+    min-width: 300px;-webkit-border-radius: 10px;
+    background: white;
+    position: absolute;
     -moz-border-radius: 10px;
     border-radius: 10px;
     border: 1px solid #eceff5;
+    z-index: 9;
 
     &__year {
       text-align: center;

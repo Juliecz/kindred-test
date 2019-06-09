@@ -23,7 +23,8 @@ class DateSelection extends React.Component<ICalendar, {}> {
     const { selected } = this.props;
 
     return (
-      <div className="date">
+      <div className="wrapper date">
+        <h3>Select month and year</h3>
         <Calendar selected={selected} setSelectedDate={this.setSelectedDate} />
       </div>
     );

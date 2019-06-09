@@ -8,6 +8,19 @@ export interface IDestination {
   OfferCount: number;
 }
 
+export interface IFlight {
+  flightNumber: string;
+  seats: string;
+  rbd: string;
+  depIata: string;
+  arrIata: string;
+  departureDateTime: string;
+  arrivalDateTime: string;
+  duration: string;
+  mileage: string;
+  aircraftRef: string;
+}
+
 export interface IDay {
   date: string;
   status: string;
@@ -15,17 +28,21 @@ export interface IDay {
   seats: string;
   duration: string;
   flightsCount: string;
+  rbd?: string;
+  flights?: IFlight[];
 }
 
-export interface IPrices {
-  sid: string;
-  sectorId: number;
-  depIata: string;
-  arrIata: string;
-  month: string;
-  saleLocation: string;
-  currency: string;
-  dayList: IDay[];
+export interface IFlights {
+  calendarPriceList: {
+    sid: string;
+    sectorId: number;
+    depIata: string;
+    arrIata: string;
+    month: string;
+    saleLocation: string;
+    currency: string;
+    dayList: IDay[];
+  };
 }
 
 export interface ISelectedDestinationData {
@@ -34,6 +51,7 @@ export interface ISelectedDestinationData {
 }
 
 export interface ISelectedDestination {
+  date: string;
   from: ISelectedDestinationData;
   to: ISelectedDestinationData;
 }

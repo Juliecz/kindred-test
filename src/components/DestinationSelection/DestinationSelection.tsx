@@ -38,7 +38,7 @@ class DestinationSelection extends React.Component<IDestinationSelection, {}> {
     const { destinations, selected } = this.props;
 
     return (
-      <div className="destination">
+      <div className="wrapper destination">
         <div className="destination-wrapper">
           <Dropdown
             name="departures"

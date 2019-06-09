@@ -1,6 +1,6 @@
 import {
   SET_DESTINATIONS,
-  SET_PRICES,
+  SET_FLIGHTS,
   SELECT_DEPARTURE,
   SELECT_ARRIVAL,
   SWAP_DEPARTURE_ARRIVAL,
@@ -9,9 +9,9 @@ import {
 
 const defaultState = {
   destinations: [],
-  prices: null,
+  flights: null,
   selected: {
-    date: null,
+    date: '',
     from: {
       data: {
         DestinationID: 5677723,
@@ -39,10 +39,10 @@ const App = (state = defaultState, action) => {
         destinations: action.destinations
       };
     }
-    case SET_PRICES: {
+    case SET_FLIGHTS: {
       return {
         ...state,
-        prices: action.prices
+        flights: action.flights
       }
     }
     case SELECT_DEPARTURE: {
