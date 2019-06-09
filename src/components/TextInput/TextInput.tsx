@@ -6,12 +6,14 @@ interface ITextInput {
   value: string;
   className?: string;
   labelClassName?: string;
-  onClick: () => void;
+  onFocus?: (event: any) => void;
+  onChange?: (event: any) => void;
+  onClick?: () => void;
   onBlur?: () => void;
 }
 
 const TextInput: React.FunctionComponent<ITextInput> = (props: ITextInput) => {
-  const { value, className, labelClassName, onClick, onBlur } = props;
+  const { value, className, labelClassName, onFocus, onChange, onClick, onBlur } = props;
 
   return (
     <label className={labelClassName || ''}>
@@ -19,6 +21,8 @@ const TextInput: React.FunctionComponent<ITextInput> = (props: ITextInput) => {
         type="text"
         className={className || ''}
         value={value}
+        onFocus={onFocus}
+        onChange={onChange}
         onClick={onClick}
         onBlur={onBlur}
       />
