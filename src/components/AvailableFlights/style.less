@@ -1,4 +1,6 @@
 .flights {
+  padding-top: 20px;
+
   &-header {
     display: flex;
     justify-content: space-around;
@@ -7,6 +9,7 @@
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
+    border: 1px solid #eceff5;
     font-size: 15px;
     font-weight: bold;
     text-align: center;
@@ -29,9 +32,29 @@
     border-style: solid;
     border-color: #eceff5;
     padding: 25px 0 25px 0;
+    font-size: 17px;
+    font-weight: 600;
 
     &.first {
       border: 1px solid #eceff5;
+    }
+
+    &__date {
+      color: #00599f;
+    }
+    &__duration {
+      font-weight: normal;
+    }
+    &__price {
+      color:  #db373c;
+      > span {
+        color: #696f7a;
+        font-size: 13px;
+        font-weight: normal;
+      }
+    }
+    &__seats {
+      color: #1f2128;
     }
   }
 

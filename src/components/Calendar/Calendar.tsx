@@ -59,12 +59,15 @@ const Calendar: React.FunctionComponent<IMonthlyCalendar> = (props: IMonthlyCale
       {showCalendar && (
         <div className="calendar-months" ref={ref}>
           <div className="calendar-months__year">
+
             <span className="arrow">
-              <img
-                src="/src/assets/arrow-left.png"
-                alt="Left arrow"
-                onClick={() => setYear(year - 1)}
-              />
+              {year > moment().year() &&
+                <img
+                  src="/src/assets/arrow-left.png"
+                  alt="Left arrow"
+                  onClick={() => setYear(year - 1)}
+                />
+              }
             </span>
             <h3>{`${month} ${year}`}</h3>
             <span className="arrow">
