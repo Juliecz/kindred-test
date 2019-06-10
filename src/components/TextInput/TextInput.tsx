@@ -3,6 +3,7 @@ import * as React from 'react';
 import './style.less';
 
 interface ITextInput {
+  name: string;
   value: string;
   className?: string;
   labelClassName?: string;
@@ -13,11 +14,12 @@ interface ITextInput {
 }
 
 const TextInput: React.FunctionComponent<ITextInput> = (props: ITextInput) => {
-  const { value, className, labelClassName, onFocus, onChange, onClick, onBlur } = props;
+  const { name, value, className, labelClassName, onFocus, onChange, onClick, onBlur } = props;
 
   return (
-    <label className={labelClassName || ''}>
+    <label className={labelClassName || ''} htmlFor={name}>
       <input
+        name={name}
         type="text"
         className={className || ''}
         value={value}

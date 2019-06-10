@@ -15,7 +15,7 @@ const Calendar: React.FunctionComponent<IMonthlyCalendar> = (props: IMonthlyCale
   const [year, setYear] = React.useState(Number(moment().format('YYYY')));
   const [showCalendar, setShowCalendar] = React.useState(false);
 
-  const useSetMonth = () => {
+  const useSetMonth = (): [string, Function] => {
     const [month, setMonth] = React.useState(moment().format('MMMM'));
 
     const onClickMonth = (value: string) => {
@@ -51,6 +51,7 @@ const Calendar: React.FunctionComponent<IMonthlyCalendar> = (props: IMonthlyCale
   return (
     <div className="calendar">
       <TextInput
+        name="calendar"
         value={selected}
         onClick={() => setShowCalendar(true)}
         labelClassName="dropdown-wrapper__label"
@@ -59,15 +60,14 @@ const Calendar: React.FunctionComponent<IMonthlyCalendar> = (props: IMonthlyCale
       {showCalendar && (
         <div className="calendar-months" ref={ref}>
           <div className="calendar-months__year">
-
             <span className="arrow">
-              {year > moment().year() &&
+              {year > moment().year() && (
                 <img
                   src="/src/assets/arrow-left.png"
                   alt="Left arrow"
                   onClick={() => setYear(year - 1)}
                 />
-              }
+              )}
             </span>
             <h3>{`${month} ${year}`}</h3>
             <span className="arrow">
@@ -79,7 +79,7 @@ const Calendar: React.FunctionComponent<IMonthlyCalendar> = (props: IMonthlyCale
             </span>
           </div>
           <div className="calendar-months__wrapper">
-            {moment.months().map(item => (
+            {moment.months().map((item: string) => (
               <div
                 key={`months-item${item}`}
                 className="calendar-months__item"

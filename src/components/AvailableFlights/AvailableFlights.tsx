@@ -42,15 +42,15 @@ const AvailableFlights: React.FunctionComponent<IAvailableFlights> = (props: IAv
             <span>Duration</span>
           </div>
           <ul>
-            {days.map((day, index) =>
-              day.flights.map(flight => (
+            {days.map((day: types.IDay, index: number) =>
+              day.flights.map((flight: types.IFlight) => (
                 <li className={`flights-item ${index === 0 ? 'first' : ''}`}>
                   <span className="flights-item__date">{moment(day.date).format('D.MM.YYYY')}</span>
                   <span className="flights-item__price">
                     {`${numeral(day.price).format('0,0')}`}
                     <span>&nbsp;CZK</span>
                   </span>
-                  <span className="flights-item__seats">{flight.seats}</span>
+                  <span className="flights-item__seats">{flight.seats || '-'}</span>
                   <span className="flights-item__duration">
                     {`${flight.duration.substr(0, 2)}h ${flight.duration.substr(2, 4)}min`}
                   </span>

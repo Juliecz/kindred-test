@@ -48,6 +48,7 @@ const Dropdown: React.FunctionComponent<IDropdown> = (props: IDropdown) => {
   return (
     <div id={name} className="dropdown-wrapper">
       <TextInput
+        name={name}
         value={inputValue}
         labelClassName="dropdown-wrapper__label"
         onFocus={onFocus}

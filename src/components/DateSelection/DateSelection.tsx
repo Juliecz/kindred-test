@@ -2,10 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import * as moment from 'moment';
 
-import {
-  setSelectedDate,
-  fetchFlights,
-} from '../../modules/actions';
+import { setSelectedDate, fetchFlights } from '../../modules/actions';
 import * as types from '../../helpers/types';
 
 import Calendar from '../Calendar/Calendar';
@@ -26,17 +23,21 @@ class DateSelection extends React.Component<ICalendar, {}> {
     const { from, to, fetchFlights } = this.props;
     const today = moment().format('MM/YYYY');
     setSelectedDate(today);
-    fetchFlights(from.data.AirportCode, to.data.AirportCode, today)
+    fetchFlights(from.data.AirportCode, to.data.AirportCode, today);
   }
 
   componentDidUpdate(prevProps: ICalendar): void {
     const { selected, from, to, fetchFlights } = this.props;
-    if (prevProps.selected !== selected || prevProps.from.data !== from.data || prevProps.to.data !== to.data) {
+    if (
+      prevProps.selected !== selected ||
+      prevProps.from.data !== from.data ||
+      prevProps.to.data !== to.data
+    ) {
       fetchFlights(from.data.AirportCode, to.data.AirportCode, selected);
     }
   }
 
-  setSelectedDate = (value) => {
+  setSelectedDate = value => {
     this.props.setSelectedDate(value);
   };
 
@@ -64,7 +65,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setSelectedDate: (value) => dispatch(setSelectedDate(value)),
+  setSelectedDate: value => dispatch(setSelectedDate(value)),
   fetchFlights: (dep, arr, monthSel) => dispatch(fetchFlights(dep, arr, monthSel)),
 });
 
