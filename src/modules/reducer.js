@@ -5,11 +5,15 @@ import {
   SELECT_ARRIVAL,
   SWAP_DEPARTURE_ARRIVAL,
   SET_SELECTED_DATE,
+  SET_DESTINATIONS_LOADING,
+  SET_FLIGHTS_LOADING,
 } from './consts';
 
 const defaultState = {
   destinations: [],
   flights: null,
+  destinationsLoading: 'unset',
+  flightsLoading: 'unset',
   selected: {
     date: '',
     from: {
@@ -92,6 +96,16 @@ const App = (state = defaultState, action) => {
           ...state.selected,
           date: action.value,
         }
+      };
+    case SET_DESTINATIONS_LOADING:
+      return {
+        ...state,
+        destinationsLoading: action.value
+      };
+    case SET_FLIGHTS_LOADING:
+      return {
+        ...state,
+        flightsLoading: action.value
       };
     default:
       return state;

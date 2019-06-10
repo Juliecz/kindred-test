@@ -14,6 +14,7 @@ import './style.less';
 interface IApp {
   destinations: types.IDestination[];
   flights: types.IFlights;
+  flightsLoading: string;
   selected: types.ISelectedDestination;
   fetchDestinations: () => () => void;
   fetchFlights: (dep: string, arr: string, monthSel: string) => () => void;
@@ -28,6 +29,7 @@ class App extends React.Component<IApp, {}> {
     const {
       destinations,
       flights,
+      flightsLoading,
       selected: { from, to },
     } = this.props;
 
@@ -37,7 +39,12 @@ class App extends React.Component<IApp, {}> {
         {from.data && to.data && (
           <>
             <DateSelection />
-            {flights && <AvailableFlights days={filterAvailableFlights(flights)} />}
+            {flights && (
+              <AvailableFlights
+                days={filterAvailableFlights(flights)}
+                flightsLoading={flightsLoading}
+              />
+            )}
           </>
         )}
       </div>
@@ -49,6 +56,7 @@ const mapStateToProps = state => ({
   destinations: state.destinations,
   flights: state.flights,
   selected: state.selected,
+  flightsLoading: state.flightsLoading,
 });
 
 const mapDispatchToProps = dispatch => ({

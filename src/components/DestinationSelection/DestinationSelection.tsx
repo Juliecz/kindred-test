@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import * as types from '../../helpers/types';
 import {
-  fetchDestinations,
   selectDeparture,
   selectArrival,
   swapDepartureArrival,
@@ -72,7 +71,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchDestinations: () => dispatch(fetchDestinations()),
   selectDeparture: value => dispatch(selectDeparture(value)),
   selectArrival: value => dispatch(selectArrival(value)),
   swapDepartureArrival: () => dispatch(swapDepartureArrival()),
