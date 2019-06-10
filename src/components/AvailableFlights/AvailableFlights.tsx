@@ -23,6 +23,14 @@ const AvailableFlights: React.FunctionComponent<IAvailableFlights> = (props: IAv
     );
   }
 
+  if (flightsLoading === 'error') {
+    return (
+      <div className="flights-error">
+        Please try again
+      </div>
+    );
+  }
+
   return (
     <div className="wrapper flights">
       {days && days.length ? (
@@ -52,7 +60,7 @@ const AvailableFlights: React.FunctionComponent<IAvailableFlights> = (props: IAv
           </ul>
         </>
       ) : (
-        <div>Not found</div>
+        <div className="flights-notfound">Available flights are not found</div>
       )}
     </div>
   );

@@ -6,8 +6,8 @@ interface ITextInput {
   value: string;
   className?: string;
   labelClassName?: string;
-  onFocus?: (event: any) => void;
-  onChange?: (event: any) => void;
+  onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onClick?: () => void;
   onBlur?: () => void;
 }
