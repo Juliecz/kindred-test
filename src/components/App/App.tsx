@@ -30,9 +30,10 @@ class App extends React.Component<IApp, {}> {
       flights,
       selected: { from, to },
     } = this.props;
+
     return (
       <div className="app">
-        {!!destinations.length && <DestinationSelection />}
+        {destinations.length && <DestinationSelection />}
         {from.data && to.data && (
           <>
             <DateSelection />
