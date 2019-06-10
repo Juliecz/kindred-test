@@ -22,7 +22,7 @@ class DateSelection extends React.Component<ICalendar, {}> {
   componentDidMount(): void {
     const { from, to, fetchFlights } = this.props;
     const today = moment().format('MM/YYYY');
-    setSelectedDate(today);
+    this.setSelectedDate(today);
     fetchFlights(from.data.AirportCode, to.data.AirportCode, today);
   }
 
@@ -37,7 +37,7 @@ class DateSelection extends React.Component<ICalendar, {}> {
     }
   }
 
-  setSelectedDate = value => {
+  setSelectedDate = (value: string): void => {
     this.props.setSelectedDate(value);
   };
 

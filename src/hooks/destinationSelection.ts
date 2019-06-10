@@ -1,13 +1,15 @@
-import * as React from "react";
+import * as React from 'react';
+import * as types from '../helpers/types';
 
-export const useInputValueEffect = (selected) => {
-  const setValue = () => (
+export const useInputValueEffect = (
+  selected,
+): [string, React.Dispatch<string>, React.Dispatch<any>, React.Dispatch<any>] => {
+  const setValue = () =>
     selected && selected.data
       ? `${selected.data.AirportCityName}, ${selected.data.AirportName} (${
-        selected.data.AirportCode
+          selected.data.AirportCode
         })`
-      : selected.text
-  );
+      : selected.text;
   const [inputValue, setInputValue] = React.useState(setValue());
 
   React.useEffect(() => {
@@ -18,14 +20,17 @@ export const useInputValueEffect = (selected) => {
     setInputValue('');
   };
 
-  const onChange = (event): void => {
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setInputValue(event.target.value);
   };
 
   return [inputValue, setInputValue, onFocus, onChange];
 };
 
-export const useFilteredDestination = (destinations, inputValue) => {
+export const useFilteredDestination = (
+  destinations: types.IDestination[],
+  inputValue: string,
+): void => {
   React.useEffect(() => {
     const destination = destinations.find(dest => {
       const value = inputValue.toLowerCase();

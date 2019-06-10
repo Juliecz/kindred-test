@@ -9,7 +9,7 @@ import './style.less';
 
 interface IAvailableFlights {
   days: types.IDay[];
-  flightsLoading: string;
+  flightsLoading: types.FlightsLoading;
 }
 
 const AvailableFlights: React.FunctionComponent<IAvailableFlights> = (props: IAvailableFlights) => {

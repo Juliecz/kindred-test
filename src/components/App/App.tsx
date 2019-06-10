@@ -14,7 +14,7 @@ import './style.less';
 interface IApp {
   destinations: types.IDestination[];
   flights: types.IFlights;
-  flightsLoading: string;
+  flightsLoading: types.FlightsLoading;
   selected: types.ISelectedDestination;
   fetchDestinations: () => () => void;
   fetchFlights: (dep: string, arr: string, monthSel: string) => () => void;

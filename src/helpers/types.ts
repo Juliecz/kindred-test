@@ -55,3 +55,5 @@ export interface ISelectedDestination {
   from: ISelectedDestinationData;
   to: ISelectedDestinationData;
 }
+
+export type FlightsLoading = 'unset' | 'loading' | 'success' | 'error';
