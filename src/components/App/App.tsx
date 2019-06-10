@@ -39,12 +39,10 @@ class App extends React.Component<IApp, {}> {
         {from.data && to.data && (
           <>
             <DateSelection />
-            {flights && (
-              <AvailableFlights
-                days={filterAvailableFlights(flights)}
-                flightsLoading={flightsLoading}
-              />
-            )}
+            <AvailableFlights
+              days={filterAvailableFlights(flights)}
+              flightsLoading={flightsLoading}
+            />
           </>
         )}
       </div>

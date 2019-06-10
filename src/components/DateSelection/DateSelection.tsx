@@ -10,7 +10,6 @@ import Calendar from '../Calendar/Calendar';
 import './style.less';
 
 interface ICalendar {
-  flights: types.IFlights;
   selected: string;
   from: types.ISelectedDestinationData;
   to: types.ISelectedDestinationData;
@@ -42,23 +41,18 @@ class DateSelection extends React.Component<ICalendar, {}> {
   };
 
   render() {
-    const { flights, selected } = this.props;
+    const { selected } = this.props;
 
-    if (flights) {
-      return (
-        <div className="wrapper date">
-          <h3>Select month and year</h3>
-          <Calendar selected={selected} setSelectedDate={this.setSelectedDate} />
-        </div>
-      );
-    }
-
-    return null;
+    return (
+      <div className="wrapper date">
+        <h3>Select month and year</h3>
+        <Calendar selected={selected} setSelectedDate={this.setSelectedDate} />
+      </div>
+    );
   }
 }
 
 const mapStateToProps = state => ({
-  flights: state.flights,
   selected: state.selected.date,
   from: state.selected.from,
   to: state.selected.to,
