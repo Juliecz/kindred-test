@@ -82,7 +82,9 @@ const Calendar: React.FunctionComponent<IMonthlyCalendar> = (props: IMonthlyCale
             {moment.months().map((item: string) => (
               <div
                 key={`months-item${item}`}
-                className="calendar-months__item"
+                className={`calendar-months__item ${
+                  selected === moment().month(item).year(year).format('MM/YYYY') ? 'selected' : ''
+                }`}
                 onClick={() => onClickMonth(item)}
               >
                 {item}

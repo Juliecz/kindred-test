@@ -35,11 +35,11 @@ const Dropdown: React.FunctionComponent<IDropdown> = (props: IDropdown) => {
 
   useFilteredDestination(destinations, inputValue);
 
-  const onClick = (): any => {
+  const onClick = (): void => {
     setFocus(true);
   };
 
-  const onSelect = (destination: types.IDestination): any => {
+  const onSelect = (destination: types.IDestination): void => {
     setFocus(false);
     selectDestination(destination);
   };
