@@ -12,42 +12,50 @@
     z-index: 9;
 
     &__year {
-      text-align: center;
-      color: #00599f;
-      padding-right: 25px;
+      display: flex;
+      color: #1f2128;
+      justify-content: space-around;
+      align-items: center;
+      margin: 5px;
       -webkit-touch-callout: none;
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;
 
-      > h3 {
-        display: inline-block;
-      }
+      .arrow {
+        height: 100%;
+        padding-top: 7px;
 
-      > span {
-        margin: 15%;
-        color: rgba(0, 89, 159, 0.25);
-        cursor: pointer;
-        font-weight: bold;
+        > img {
+          height: 20px;
+        }
       }
     }
 
     &__wrapper {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 20px;
     }
 
     &__item {
       width: 33%;
-        cursor: pointer;
-        color: #00599f;
-        text-align: center;
-        padding-top: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      color:  #525566;
+      text-align: center;
+      padding: 10px;
+      border: 1px solid #e6e6e6;
+      border-radius: 4px;
+      margin: 3px;
 
-        &:nth-child(10) {
-          padding-bottom: 25px;
-        }
+      &:hover {
+        color: #00599f;
+        background-color: white;
+        box-shadow: 0 0 15px 0 rgba(5, 15, 34, 0.30);
+      }
     }
   }
 }

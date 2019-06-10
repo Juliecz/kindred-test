@@ -1,23 +1,56 @@
 .flights {
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  border: 1px solid #eceff5;
-  height: 400px;
-  overflow-y: scroll;
-  background-color: white;
-
-  li {
-    list-style: none;
-    padding: 14px 0 14px 10px;
-    border-radius: 10px;
-    //color: #00599f;
-
+  &-header {
     display: flex;
     justify-content: space-around;
+    color: #696f7a;
+    background-color: #f8fafe;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 20px 0 20px 0;
 
     > span {
       width: 25%;
     }
+  }
+
+  &-item {
+    background-color: rgb(255, 255, 255);
+    color: #696f7a;
+    text-align: center;
+    border-top: 0;
+    border-right: 1px;
+    border-left: 1px;
+    border-bottom: 1px;
+    border-style: solid;
+    border-color: #eceff5;
+    padding: 25px 0 25px 0;
+
+    &.first {
+      border: 1px solid #eceff5;
+    }
+  }
+
+  ul {
+    margin-top: 10px;
+    padding: 0;
+    height: 400px;
+    overflow-y: scroll;
+
+    li {
+      list-style: none;
+      display: flex;
+      justify-content: space-around;
+
+      > span {
+        width: 25%;
+      }
+    }
+
+
   }
 }

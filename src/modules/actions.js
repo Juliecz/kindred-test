@@ -29,8 +29,13 @@ export const fetchDestinations = () => dispatch => {
 
 export const fetchFlights = (dep, arr, monthSel) => dispatch => {
   fetchData(
-    `https://www.csa.cz/Umbraco/Api/CalendarPricesCache/GetPrices/
-        ?DEP=${dep}&ARR=${arr}&MONTH_SEL=${monthSel}&SECTOR_ID=0&LANG=cs&ID_LOCATION=cz`,
+    `https://www.csa.cz/Umbraco/Api/CalendarPricesCache/GetPrices/?DEP=${
+      dep
+    }&ARR=${
+      arr
+    }&MONTH_SEL=${
+      monthSel
+    }&SECTOR_ID=0&LANG=cs&ID_LOCATION=cz`,
   )
     .then(data => dispatch(setFlights(data)))
     .catch(err => err);

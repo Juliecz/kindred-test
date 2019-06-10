@@ -12,40 +12,33 @@ import AvailableFlights from '../AvailableFlights/AvailableFlights';
 import './style.less';
 
 interface IApp {
-  destinations: types.IDestination[],
-  flights: types.IFlights,
-  selected: types.ISelectedDestination,
-  fetchDestinations: () => () => void,
-  fetchFlights: (dep: string, arr: string, monthSel: string) => () => void,
+  destinations: types.IDestination[];
+  flights: types.IFlights;
+  selected: types.ISelectedDestination;
+  fetchDestinations: () => () => void;
+  fetchFlights: (dep: string, arr: string, monthSel: string) => () => void;
 }
 
 class App extends React.Component<IApp, {}> {
   componentDidMount(): void {
     this.props.fetchDestinations();
-    console.log(filterAvailableFlights(this.props.flights));
-  }
-
-  componentDidUpdate(prevProps: IApp): void {
-    const {
-      selected: { date, from, to },
-      fetchFlights,
-    } = this.props;
-
-    if (date !== prevProps.selected.date && from.data && to.data) {
-      fetchFlights(from.data.AirportCode, to.data.AirportCode, date);
-    }
   }
 
   render() {
-    const { destinations, flights } = this.props;
+    const {
+      destinations,
+      flights,
+      selected: { from, to },
+    } = this.props;
     return (
       <div className="app">
-        {!!destinations.length && (
-          <DestinationSelection />
+        {!!destinations.length && <DestinationSelection />}
+        {from.data && to.data && (
+          <>
+            <DateSelection />
+            {flights && <AvailableFlights days={filterAvailableFlights(flights)} />}
+          </>
         )}
-        <DateSelection />
-
-        {flights && <AvailableFlights days={filterAvailableFlights(flights)} />}
       </div>
     );
   }
