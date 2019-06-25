@@ -33,6 +33,10 @@ class App extends React.Component<IApp, {}> {
       selected: { from, to },
     } = this.props;
 
+    if (!destinations.length) {
+      return <div className="app" />;
+    }
+
     return (
       <div className="app">
         {destinations.length && <DestinationSelection />}
